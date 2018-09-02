@@ -7,10 +7,9 @@ use models\User;
         public function hello()
         {
             $user = new User;
-            $user = $user->getName();
+            $name = $user->getName();
            
-
-            view('user.hello',['name'=>$user]);
+            view('users.hello',['name'=>$name]);
         }
     }
 ?>
