@@ -9,8 +9,7 @@ use models\Blog;
             $data = $blog->search();
 
             foreach($data as $v)
-            {
-            
+            { 
             view('blogs.index',['data'=>$data]);
             $str = ob_get_contents();
             file_put_contents(ROOT.'public/contents/'.$v['id'].'html',$str);
