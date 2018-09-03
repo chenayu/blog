@@ -22,8 +22,8 @@
     }
 
     $fullController = 'controllers\\'.$controller;
-   // echo $fullController;
-
+//    echo $fullController;
+    
     // $_C = new controllers\UserController;
     // $_C->hello();
     $_C = new $fullController;
