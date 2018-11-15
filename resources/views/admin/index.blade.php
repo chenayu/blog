@@ -5,7 +5,7 @@
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>运营商后台管理系统</title>
+    <title>后台管理系统</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
   
@@ -42,9 +42,9 @@
             <!-- Logo -->
             <a href="index.html" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>品优购</b></span>
+                <span class="logo-mini"><b>pin</b></span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>品优购-运营商后台</b></span>
+                <span class="logo-lg"><b>运营商后台</b></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -385,13 +385,13 @@
 				        <ul class="treeview-menu">
 				
 				            <li id="admin-login">
-				                <a href=" " target="iframe">
-				                    <i class="fa fa-circle-o"></i>分类管理
+				                <a href="{{route('article')}}" target="iframe">
+				                    <i class="fa fa-circle-o"></i>文章管理
 				                </a>
 				            </li>
 							<li id="admin-login">
-                            <a href=" " target="iframe">
-				                    <i class="fa fa-circle-o"></i>文章管理
+                            <a href=" {{route('category')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i>分类管理
 				                </a>
 				            </li>
 				        </ul>                        
