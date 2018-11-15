@@ -75,22 +75,29 @@
 			                      <tbody>
 									  @foreach($data as $v)
 			                          <tr>
-			                          <td><input  type="checkbox"></td>			                              
+                                      <td><input  type="checkbox"></td>	
+                                      <td>{{$v->id}}</td>		                              
                                       <td>{{$v->title}}</td>
                                       <td>{{$v->cat_name}}</td>
                                       <td>{{$v->is_show}}</td>
                                       <td>{{$v->created_at}}</td>
 									  <td> </td>		                                                                 
-		                                  <td class="text-center">                                           
-									 <a href="{{route('article.edit',['id'=>$v->id])}}" class="btn bg-olive btn-xs">修改</a>					 
-										  <a href="{{route('article.delete',['id'=>$v->id])}}" class="btn bg-olive btn-xs">删除</a>
-											                                              
+		                                  <td class="text-center">
+                                          @if($v->is_show==1)
+                                          <a href="javascript:;" onClick="show({{$v->id}})" class="btn bg-olive btn-xs is_show{{$v->id}}">隐藏</a>
+                                          @else 
+                                          <a href="javascript:;" onClick="show({{$v->id}})" class="btn bg-olive btn-xs is_show{{$v->id}}">公开</a>
+                                          @endif			 
+									      <a href="{{route('article.edit',['id'=>$v->id])}}" class="btn bg-olive btn-xs">修改</a>				 
+										  <a href="{{route('article.delete',['id'=>$v->id])}}" class="btn bg-olive btn-xs">删除</a>                                            
 		                                  </td>
 									  </tr>
 									  @endforeach
 									  <td></td>	
 			                      </tbody>
-			                  </table>                    
+                              </table>   
+                              <div class="list-page"> {{ $data->links() }} </div>
+                                               
                         </div>         
                      </div>
                     <!-- /.box-body -->		    
@@ -152,7 +159,6 @@
 </div>
   
 </body>
-
 </html>
 <link rel="stylesheet" type="text/css" href="/simditor-2.3.6/styles/simditor.css" />		
 <script type="text/javascript" src="/simditor-2.3.6/scripts/jquery.min.js"></script>
@@ -161,7 +167,28 @@
 <script type="text/javascript" src="/simditor-2.3.6/scripts/uploader.js"></script>
 <script type="text/javascript" src="/simditor-2.3.6/scripts/simditor.js"></script>
 <script>
-  //文章编辑器
+
+    function show(id){
+        // alert(id);
+         $(function () {
+        $.ajax({
+            type:"GET",
+            url:"/is_show/"+id,
+            dataType:"json",
+            success:function(data)
+            {
+                if(data==1)
+                {
+                    $(".is_show"+id).html('隐藏');
+                }else{
+                    $(".is_show"+id).html('公开');
+                }
+            }
+          })
+       })
+    }  
+
+//编辑器
   var editor = new Simditor({
 		  textarea: $('#editor'),
 		  toolbar:[

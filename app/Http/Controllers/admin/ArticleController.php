@@ -9,12 +9,12 @@ use App\Models\Type;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(Request $req)
     {
 
        $type = Type::getCategory(); //取出分类
-       $data = Article::getArticle(); //取出文章
-        return view('admin.article.index',['cat'=>$type,'data'=>$data]);
+       $data = Article::getArticle($req); //取出文章
+       return view('admin.article.index',['cat'=>$type,'data'=>$data]);
     }
 
     //添加
@@ -49,5 +49,13 @@ class ArticleController extends Controller
         $data = Article::find($id);
         $data->delete();
         return redirect()->route('article');
+    }
+
+    //是否公开
+    public function is_show($id)
+    {
+    //    echo $data = 1;
+    //    exit;
+        echo $data = Article::is_show($id);
     }
 }

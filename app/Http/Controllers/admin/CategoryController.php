@@ -35,5 +35,13 @@ class CategoryController extends Controller
         return redirect()->route('category');
     }
 
+    //删除
+    public function delete($id)
+    {
+        $data = Type::find($id);
+        $data->delete();
+        return redirect()->route('category');
+    }
+
 
 }
