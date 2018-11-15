@@ -24,12 +24,24 @@ class article extends Model
        ->paginate(10);
     }
 
-    //是否置顶
+    //是否公开
     public static function is_show($id)
     {
         $data = Article::select('is_show')->where('id',$id)->first();
         $num = $data['is_show']==1 ? 0 : 1;
         $ret = Article::where('id',$id)->update(['is_show'=>$num]);
+        if($ret)
+        {
+            return $num;
+        }
+    }
+
+    //是否置顶
+    public static function top($id)
+    {
+        $data = Article::select('top')->where('id',$id)->first();
+        $num = $data['top']==1 ? 0 : 1;
+        $ret = Article::where('id',$id)->update(['top'=>$num]);
         if($ret)
         {
             return $num;

@@ -87,7 +87,15 @@
                                           <a href="javascript:;" onClick="show({{$v->id}})" class="btn bg-olive btn-xs is_show{{$v->id}}">隐藏</a>
                                           @else 
                                           <a href="javascript:;" onClick="show({{$v->id}})" class="btn bg-olive btn-xs is_show{{$v->id}}">公开</a>
-                                          @endif			 
+                                          @endif
+                                          {{-- 置顶 --}}
+                                          @if($v->top==1)
+                                          <a href="javascript:;" onClick="top({{$v->id}})" class="btn bg-olive btn-xs top{{$v->id}}">取消置顶</a>
+                                          @else 
+                                          <a href="javascript:;" onClick="top({{$v->id}})" class="btn bg-olive btn-xs top{{$v->id}}">置顶</a>
+                                          @endif
+                                          {{-- 置顶 --}}
+
 									      <a href="{{route('article.edit',['id'=>$v->id])}}" class="btn bg-olive btn-xs">修改</a>				 
 										  <a href="{{route('article.delete',['id'=>$v->id])}}" class="btn bg-olive btn-xs">删除</a>                                            
 		                                  </td>
@@ -168,6 +176,7 @@
 <script type="text/javascript" src="/simditor-2.3.6/scripts/simditor.js"></script>
 <script>
 
+    // 是否公开
     function show(id){
         // alert(id);
          $(function () {
@@ -187,6 +196,28 @@
           })
        })
     }  
+
+    //是否置顶
+    function top(id){
+        // alert(id);
+         $(function () {
+        $.ajax({
+            type:"GET",
+            url:"/top/"+id,
+            dataType:"json",
+            success:function(data)
+            {
+                if(data==1)
+                {
+                    $(".top"+id).html('取消置顶');
+                }else{
+                    $(".top"+id).html('置顶');
+                }
+            }
+          })
+       })
+    }  
+
 
 //编辑器
   var editor = new Simditor({

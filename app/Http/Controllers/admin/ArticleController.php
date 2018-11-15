@@ -58,4 +58,12 @@ class ArticleController extends Controller
     //    exit;
         echo $data = Article::is_show($id);
     }
+
+    //是否置顶
+    public function top($id)
+    {
+        echo 12;
+        exit;
+        echo $data = Article::top($id);
+    }
 }

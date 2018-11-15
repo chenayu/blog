@@ -15,7 +15,10 @@
 //     return view('welcome');
 // });
 
-Route::get('/','admin\indexController@index')->name('admin.index');
+
+Route::middleware(['login'])->group(function(){ 
+
+Route::get('/admin','admin\indexController@index')->name('admin.index');
 
 //文章列表
 Route::get('/article','admin\ArticleController@index')->name('article');
@@ -27,8 +30,10 @@ Route::get('/article/edit/{id}','admin\ArticleController@edit')->name('article.e
 Route::post('/article/update/{id}','admin\ArticleController@update')->name('article.update');
 //删除文章
 Route::get('/article/delete/{id}','admin\ArticleController@delete')->name('article.delete');
-//
+//ajax是否公开
 Route::get('/is_show/{id}','admin\ArticleController@is_show')->name('article.is_show');
+//ajax是否置顶
+Route::get('/top/{id}','admin\ArticleController@top')->name('article.top');
 
 //分类
 Route::get('/category','admin\CategoryController@index')->name('category');
@@ -38,9 +43,20 @@ Route::post('/category/insert','admin\CategoryController@insert')->name('categor
 // Route::get('/category/edit/{id}','admin\CategoryController@edit')->name('category.edit');
 // //分类修改
 // Route::post('/category/update/{id}','admin\CategoryController@update')->name('category.update');
-// //删除分类
-// Route::get('/category/delete/{id}','admin\CategoryController@delete')->name('category.delete');
+//删除分类
+Route::get('/category/delete/{id}','admin\CategoryController@delete')->name('category.delete');
+
+//后台登录
+Route::get('/logout','admin\LoginController@logout')->name('logout');
 
 //模拟数据
 Route::get('/mock','admin\MockController@blog')->name('mock');
 Route::get('/test','TestController@test')->name('test');
+});
+
+//后台登录
+Route::get('/login','admin\LoginController@login')->name('login');
+Route::post('/dologin','admin\LoginController@dologin')->name('dologin');
+
+//主页
+Route::get('/','home\IndexController@index')->name('home.index');

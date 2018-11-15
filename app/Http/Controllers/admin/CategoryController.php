@@ -9,7 +9,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('admin.category.index');
+        $data = Type::getCategory();
+        return view('admin.category.index',['data'=>$data]);
     }
 
     public function insert(Request $req)
@@ -17,10 +18,9 @@ class CategoryController extends Controller
         $data = new Type();
         $data->cat_name = $req->cat_name;
         $data->save();
-        return redirect()->route('category');          
-
+        return redirect()->route('category');
     }
-
+ 
     public function edit($id)
     {
         $data = Type::find($id);
@@ -30,7 +30,7 @@ class CategoryController extends Controller
     public function update(Request $req,$id)
     {
         $data = Type::find($id);
-        $data->cat_name = $req->$req->name;
+        $data->cat_name = $req->cat_name;
         $data->save();
         return redirect()->route('category');
     }

@@ -21,18 +21,14 @@
 </head>
 
 <body class="hold-transition skin-red sidebar-mini" >
-  <!-- .box-body -->
-                
                     <div class="box-header with-border">
                         <h5 class="box-title">分类管理</h5>
                     </div>
 
                     <div class="box-body">
 
-                        <!-- 数据表格 -->
                         <div class="table-box">
 
-                            <!--工具栏-->
                             <div class="pull-left">
                                 <div class="form-group form-inline">
                                     <div class="btn-group">
@@ -53,9 +49,7 @@
                                             </form>
                                 </div>
                             </div>
-                            <!--工具栏/-->
 
-			                  <!--数据列表-->
 			                  <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
 			                      <thead>
 			                          <tr>
@@ -63,50 +57,36 @@
 			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
 			                              </th> 
 										  <th class="sorting_asc">ID</th>
-									      <th class="sorting">排序</th>
-									      <th class="sorting">标题</th>
-										  <th class="sorting">类型</th>
-										  <th class="sorting">状态</th>
-										  {{-- <th class="sorting">访问</th> --}}
-                                          <th class="sorting">创建日期</th>												     						
+									      <th class="sorting">名称</th>
+									      <th class="sorting">数</th>											     						
 										  <th class="text-center">操作</th>
 										  <th class="sorting"></th>
 			                          </tr>
 			                      </thead>
 			                      <tbody>
-									  {{-- @foreach($data as $v) --}}
+									  @foreach($data as $v)
 			                          <tr>
-			                              <td><input  type="checkbox"></td>			                              
-									  <td></td>
-                                      <td> </td>
-                                      <td> </td>
+			                          <td><input  type="checkbox"></td>			                              
+									  <td>{{$v->id}}</td>
+                                      <td>{{$v->cat_name}}</td>
+									  <td>{{$v->num}}</td>
 									  <td> </td>		 
-									   	                                                                  
+                                                                
 		                                  <td class="text-center">                                           
-										  {{-- <a href="{{route('article.edit',['id'=>$v->id])}}" class="btn bg-olive btn-xs">修改</a>					 
-										  <a href="{{route('article.delete',['id'=>$v->id])}}" class="btn bg-olive btn-xs">删除</a>                                      --}}
+										  {{-- <a href="{{route('article.edit',['id'=>$v->id])}}" class="btn bg-olive btn-xs">修改</a>					  --}}
+										  <a href="{{route('category.delete',['id'=>$v->id])}}" class="btn bg-olive btn-xs">删除</a>                                     
 											                                              
 		                                  </td>
 									  </tr>
-									  {{-- @endforeach --}}
+									  @endforeach
 									  <td></td>	
 			                      </tbody>
-			                  </table>
-			                  <!--数据列表/-->                        
+							  </table>
+                              <div class="list-page"> {{ $data->links() }} </div>
 							  
-							 
                         </div>
-                        <!-- 数据表格 /-->
-                        
-                        
-                        
-                        
                      </div>
-                    <!-- /.box-body -->
-                    
-	           
-					    
-                                
+                                    
 <!-- 编辑窗口 -->
 
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
