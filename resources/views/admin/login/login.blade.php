@@ -11,13 +11,13 @@
     <div class="adming_login_border">
         <div class="admin_input">
 
-                {{--     @if($errors->any())
+                    @if($errors->any())
                             <ul>
                                 @foreach($errors->all() as $e)
                                 <li>{{ $e }}</li>
                                 @endforeach
                             </ul>
-                @endif --}}
+                @endif
 
         <form action="{{route('dologin')}}" method="post">
 		{{csrf_field() }}

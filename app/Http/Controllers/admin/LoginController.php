@@ -17,8 +17,7 @@ class LoginController extends Controller
     public function dologin(Request $req)
     {
         $user = User::where('username','=',$req->username)->first(); 
-        var_dump($user);
-        exit;
+      
         if($user){
             if(Hash::check($req->password,$user->password)){
                 session([

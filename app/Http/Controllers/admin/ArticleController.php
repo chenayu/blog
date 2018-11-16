@@ -12,7 +12,7 @@ class ArticleController extends Controller
     public function index(Request $req)
     {
 
-       $type = Type::getCategory(); //取出分类
+       $type = Type::getType(); //取出分类
        $data = Article::getArticle($req); //取出文章
        return view('admin.article.index',['cat'=>$type,'data'=>$data]);
     }
@@ -62,8 +62,6 @@ class ArticleController extends Controller
     //是否置顶
     public function top($id)
     {
-        echo 12;
-        exit;
         echo $data = Article::top($id);
     }
 }

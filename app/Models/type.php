@@ -9,6 +9,10 @@ class type extends Model
 {
     public $timestamps = false;
 
+    public static function getType()
+    {
+        return Type::get();
+    }
     public static function getCategory(){
 
        return Type::select('types.*',DB::raw('COUNT(types.id) as num'))

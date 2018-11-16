@@ -80,8 +80,7 @@
                                       <td>{{$v->title}}</td>
                                       <td>{{$v->cat_name}}</td>
                                       <td>{{$v->is_show}}</td>
-                                      <td>{{$v->created_at}}</td>
-									  <td> </td>		                                                                 
+                                      <td>{{$v->created_at}}</td>		                                                                 
 		                                  <td class="text-center">
                                           @if($v->is_show==1)
                                           <a href="javascript:;" onClick="show({{$v->id}})" class="btn bg-olive btn-xs is_show{{$v->id}}">隐藏</a>
@@ -90,9 +89,9 @@
                                           @endif
                                           {{-- 置顶 --}}
                                           @if($v->top==1)
-                                          <a href="javascript:;" onClick="top({{$v->id}})" class="btn bg-olive btn-xs top{{$v->id}}">取消置顶</a>
+                                          <a href="javascript:;" onClick="top1({{$v->id}})" class="btn bg-olive btn-xs top{{$v->id}}">取消置顶</a>
                                           @else 
-                                          <a href="javascript:;" onClick="top({{$v->id}})" class="btn bg-olive btn-xs top{{$v->id}}">置顶</a>
+                                          <a href="javascript:;" onClick="top1({{$v->id}})" class="btn bg-olive btn-xs top{{$v->id}}">置顶</a>
                                           @endif
                                           {{-- 置顶 --}}
 
@@ -101,7 +100,7 @@
 		                                  </td>
 									  </tr>
 									  @endforeach
-									  <td></td>	
+								 
 			                      </tbody>
                               </table>   
                               <div class="list-page"> {{ $data->links() }} </div>
@@ -139,7 +138,7 @@
                   <tr>
                     <td>是否公开</td>
                     <td>
-                        <input type="radio" name="is_show" value="1">公开
+                        <input type="radio" name="is_show" value="1" checked>公开
                         <input type="radio" name="is_show" value="0">隐藏
                     </td>
                   </tr>
@@ -147,7 +146,10 @@
                   <tr>
                     <td>置顶</td>
                     <td>
-                        <input type="radio" name="top" value="1">
+                        <input type="radio" name="top" value="0"  checked>否
+                        <input type="radio" name="top" value="1">是
+
+                        
                     </td>
                   </tr>
 
@@ -198,8 +200,8 @@
     }  
 
     //是否置顶
-    function top(id){
-        // alert(id);
+    function top1(id){
+        alert(id);
          $(function () {
         $.ajax({
             type:"GET",
