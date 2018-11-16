@@ -336,44 +336,7 @@
 				            </li>
 				        </ul>                        
 				    </li>
-					<li class="treeview">
-				        <a href="#">
-				            <i class="fa fa-folder"></i> 
-				            <span>商品管理</span>
-				            <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
-				        </a>
-				        <ul class="treeview-menu">
-				
-				            <li id="admin-login">
-                            <a href="" target="iframe">
-				                    <i class="fa fa-circle-o"></i>品牌管理
-				                </a>
-				            </li>
-							<li id="admin-login">
-                            <a href=" " target="iframe">
-				                    <i class="fa fa-circle-o"></i>商品管理
-				                </a>
-				            </li>							
-							<li id="admin-login">
-                            <a href=" " target="iframe">
-				                    <i class="fa fa-circle-o"></i>推荐管理
-				                </a>
-				            </li>
-							<li id="admin-login">
-				                <a href="categories" target="iframe">
-				                    <i class="fa fa-circle-o"></i>分类管理
-				                </a>
-				            </li>
-							<li id="admin-login">
-				                <a href="goods.html" target="iframe">
-				                    <i class="fa fa-circle-o"></i>商品审核
-				                </a>
-				            </li>
-				        </ul>                        
-                    </li>
-                    
+					
                     <li class="treeview">
 				        <a href="#">
 				            <i class="fa fa-folder"></i> 
@@ -392,80 +355,6 @@
 							<li id="admin-login">
                             <a href=" {{route('category')}}" target="iframe">
                             <i class="fa fa-circle-o"></i>分类管理
-				                </a>
-				            </li>
-				        </ul>                        
-                    </li>
-                    
-                    <li class="treeview">
-				        <a href="#">
-				            <i class="fa fa-folder"></i> 
-				            <span>会员管理</span>
-				            <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
-				        </a>
-				        <ul class="treeview-menu">
-                            <li id="admin-login">
-                                <a href=" " target="iframe">
-                                        <i class="fa fa-circle-o"></i>会员列表
-                                    </a>
-                                </li>
-				            <li id="admin-login">
-				                <a href=" " target="iframe">
-				                    <i class="fa fa-circle-o"></i>会员等级
-				                </a>
-				            </li>
-						
-				        </ul>                        
-				    </li>
-					
-					<li class="treeview">
-				        <a href="#">
-				            <i class="fa fa-folder"></i> 
-				            <span>广告管理</span>
-				            <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
-				        </a>
-				        <ul class="treeview-menu">
-				
-				            <li id="admin-login">
-                            <a href=" " target="iframe">
-				                    <i class="fa fa-circle-o"></i>广告管理
-				                </a>
-				            </li>
-							<li id="admin-login">
-				                <a href="content.html" target="iframe">
-				                    <i class="fa fa-circle-o"></i>广告类型管理
-				                </a>
-				            </li>
-				        </ul>                        
-                    </li>
-
-                    <li class="treeview">
-				        <a href="#">
-				            <i class="fa fa-folder"></i> 
-				            <span>订单管理</span>
-				            <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
-				        </a>
-				        <ul class="treeview-menu">
-				
-				            <li id="admin-login">
-                            <a href=" " target="iframe">
-				                    <i class="fa fa-circle-o"></i>订单管理
-				                </a>
-				            </li>
-							<li id="admin-login">
-				                <a href=" " target="iframe">
-				                    <i class="fa fa-circle-o"></i>已发货订单
-				                </a>
-                            </li>
-                            <li id="admin-login">
-				                <a href="content.html" target="iframe">
-				                    <i class="fa fa-circle-o"></i>未付款订单
 				                </a>
 				            </li>
 				        </ul>                        

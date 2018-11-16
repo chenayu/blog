@@ -24,6 +24,22 @@ class article extends Model
        ->paginate(10);
     }
 
+    //前台首页取数据
+    public static function getData($req)
+    {
+       $data = Article::where('is_show',1)->select('articles.*','types.cat_name')
+       ->leftJoin('types','types.id','=','articles.type_id');
+       if($req->keyword){
+           $data->where(function($q) use ($req){
+               $q->where('title','like',"%$req->keyword%")
+               ->orWhere('content','like',"%$req->keyword%")
+               ->orWhere('cat_name','like',"%$req->keyword%");
+           });
+       }
+       return $data->orderBy('articles.id','desc')
+       ->paginate(10);
+    }
+
     //是否公开
     public static function is_show($id)
     {
