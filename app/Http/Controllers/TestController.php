@@ -35,12 +35,8 @@ class TestController extends Controller
         //     return redirect()->route('index');
         // }
        echo $id = session('id');
-    //    $date = date('Y-m');
-    //    @mkdir('access');
-    //    @mkdir('access/'.$date);
 
-
-      
+ 
      }
 
 }

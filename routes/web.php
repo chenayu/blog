@@ -50,6 +50,8 @@ Route::get('/category/delete/{id}','admin\CategoryController@delete')->name('cat
 Route::get('/personage','admin\PersonageController@index')->name('personage');
 //信息
 Route::get('/info','admin\InfoController@index')->name('info');
+//个人
+Route::post('/info/insert','admin\InfoController@insert')->name('info.insert')->name('info');
 
 
 //后台登录

@@ -89,6 +89,7 @@
       <!-- 搜索框 -->
       <div class="search">
         <form action="" method="get" accept-charset="utf-8">
+		  	{{csrf_field()}}
           <input type="text" name="keyword" results="0" value="xx5" placeholder="Search">
           <input class="inp" type="submit" value="搜索">
         </form>
