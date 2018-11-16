@@ -40,6 +40,18 @@ class article extends Model
        ->paginate(10);
     }
 
+    //获取文章内容
+    public function getContent($id)
+    {
+        //判断是否是公开的
+        $data = Article::where('is_show',1)->where('id',$id)->first();
+        if($data==NULL)
+        {
+            return redirect()->route('index');
+        }
+
+    }
+
     //是否公开
     public static function is_show($id)
     {

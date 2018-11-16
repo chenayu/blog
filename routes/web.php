@@ -46,6 +46,12 @@ Route::post('/category/insert','admin\CategoryController@insert')->name('categor
 //删除分类
 Route::get('/category/delete/{id}','admin\CategoryController@delete')->name('category.delete');
 
+//个人中心
+Route::get('/personage','admin\PersonageController@index')->name('personage');
+//信息
+Route::get('/info','admin\InfoController@index')->name('info');
+
+
 //后台登录
 Route::get('/logout','admin\LoginController@logout')->name('logout');
 
@@ -59,4 +65,6 @@ Route::get('/login','admin\LoginController@login')->name('login');
 Route::post('/dologin','admin\LoginController@dologin')->name('dologin');
 
 //主页
-Route::get('/','home\IndexController@index')->name('home.index');
+Route::get('/','home\IndexController@index')->name('index');
+//内容页
+Route::get('/content/{id}','home\IndexController@content')->name('content');

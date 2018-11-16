@@ -325,8 +325,8 @@
 				        <ul class="treeview-menu">
 				
 				            <li id="admin-login">
-				                <a href="seller_1.html" target="iframe">
-				                    <i class="fa fa-circle-o"></i>商家审核
+                            <a href="{{route('personage')}}" target="iframe">
+				                    <i class="fa fa-circle-o"></i>个人信息
 				                </a>
 				            </li>
 							<li id="admin-login">

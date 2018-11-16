@@ -53,7 +53,7 @@
               <!-- <div class="icon"></div> -->
 
               <h1 class="title">
-              <a href="/index/content?id=">{{$v->title}}</a>
+              <a href="{{route('content',['id'=>$v->id])}}">{{$v->title}}</a>
               </h1>
 
               <time datetime="xx2">
