@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Type;
 
 class article extends Model
@@ -37,7 +39,7 @@ class article extends Model
            });
        }
        return $data->orderBy('articles.id','desc')
-       ->paginate(10);
+       ->paginate(5);
     }
 
     //获取文章内容
@@ -84,11 +86,11 @@ class article extends Model
             $str[$k]['id']=$v['id'];
             $str[$k]['title']=$v['title'];
         }
-
+        $str[]=$num;
         return $str;
     }
 
-    //是否公开
+    //设置是否公开
     public static function is_show($id)
     {
         $data = Article::select('is_show')->where('id',$id)->first();
@@ -100,7 +102,7 @@ class article extends Model
         }
     }
 
-    //是否置顶
+    //设置是否置顶
     public static function top($id)
     {
         $data = Article::select('top')->where('id',$id)->first();

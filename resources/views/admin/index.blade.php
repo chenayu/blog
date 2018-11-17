@@ -44,13 +44,14 @@
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>pin</b></span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>运营商后台</b></span>
+                <span class="logo-lg"><b>博客后台</b></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
                 <!-- Sidebar toggle button-->
+                {{-- 收缩按钮 --}}
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
+                    {{-- <span class="sr-only">Toggle navigation</span> --}}
                 </a>
 
                 <div class="navbar-custom-menu">
@@ -256,7 +257,7 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="img/admin/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <img src=" " class="user-image">
                                 <span class="hidden-xs">测试用户</span>
                             </a>
                             <ul class="dropdown-menu">
@@ -293,17 +294,7 @@
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
                 <!-- Sidebar user panel -->
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="img/admin/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        <img src="" class="img-circle" alt="User Image">
-                    
-                    </div>
-                    <div class="pull-left info">
-                        <p>用户</p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
-                    </div>
-                </div>
+        
               
                 <!-- /.search form -->
 

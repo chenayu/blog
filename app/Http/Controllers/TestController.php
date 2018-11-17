@@ -58,9 +58,10 @@ class TestController extends Controller
             $str[$k]['title']=$v['title'];
 
         }
+        $str[]=++$num;
 
-        
-        var_dump($str[0]['id']);
+        echo '<pre>';
+        var_dump($str);
   
  
      }

@@ -58,7 +58,7 @@
 			                              </th> 
 										  <th class="sorting_asc">ID</th>
 									      <th class="sorting">名称</th>
-									      <th class="sorting">数</th>											     						
+									      <th class="sorting">文章数</th>											     						
 										  <th class="text-center">操作</th>
 										  <th class="sorting"></th>
 			                          </tr>
@@ -70,7 +70,7 @@
 									  <td>{{$v->id}}</td>
                                       <td>{{$v->cat_name}}</td>
 									  <td>{{$v->num}}</td>
-									  <td> </td>		 
+							 		 
                                                                 
 		                                  <td class="text-center">                                           
 										  {{-- <a href="{{route('article.edit',['id'=>$v->id])}}" class="btn bg-olive btn-xs">修改</a>					  --}}
@@ -79,10 +79,10 @@
 		                                  </td>
 									  </tr>
 									  @endforeach
-									  <td></td>	
+								 
 			                      </tbody>
 							  </table>
-                              <div class="list-page"> {{ $data->links() }} </div>
+                              {{-- <div class="list-page"> {{ $data->links() }} </div> --}}
 							  
                         </div>
                      </div>

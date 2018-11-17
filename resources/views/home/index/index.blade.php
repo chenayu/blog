@@ -5,7 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <script src="/js/jquery.min.js"></script>
   <title>Document</title>
@@ -17,7 +20,7 @@
     <div class="navbar">
       <ul class="nav">
         <li class="item">
-          <a href="#">Home</a>
+        <a href="{{route('index')}}">Home</a>
         </li>
 
         <li class="item">
@@ -52,29 +55,26 @@
             <header>
               <!-- <div class="icon"></div> -->
 
-              <h4 class="title">
+              <h2 class="title str">
               <a href="{{route('content',['id'=>$v->id])}}">{{$v->title}}</a>
-              </h4>
+              </h2>
 
               <time datetime="xx2">
-              <a href="">{{$v->created_at}}</a>
+              {{$v->created_at}}
               </time>
             </header>
 
-            <div class="entry">
-              {{$v->content}}
+            <div class="entry str">
+              {{!! $v->content !!}}
             </div>
          
-
-
             <footer>
               <div class="alignleft">
                 <a href="" class="more-link">
                 {{$v->cat_name}}</a>
               </div>
-              <div class="clearfix">xx</div>
+              <div class="clearfix"></div>
             </footer>
-
           </div>
         </article>
         @endforeach
@@ -90,12 +90,11 @@
       <div class="search">
         <form action="" method="get" accept-charset="utf-8">
 		  	{{csrf_field()}}
-          <input type="text" name="keyword" results="0" value="xx5" placeholder="Search">
+          <input type="text" name="keyword" results="0" value="<?=isset($_GET['keyword']) ? $_GET['keyword'] : ''; ?>" placeholder="Search">
           <input class="inp" type="submit" value="搜索">
         </form>
       </div>
       <!-- 搜索框end -->
-
 
       <div class="widget tag">
         <h3 class="title">Tags</h3>
@@ -123,10 +122,13 @@
     <div class="clearfix"></div>
   </div>
   <footer id="footer" class="inner">
+ 
+ 
     <div class="list-page"> 2 条 1/1 页
+        <div class="list-page"> {{ $data->links() }} </div>
+
     </div>
     <div class="alignleft">
-
       &copy; 2018 xin
 
     </div>
@@ -153,3 +155,19 @@
 
 </html>
 <script src="/js/base.js"></script>
+<script>
+$(function(){
+  //获取搜索的关键字
+  var key= $("input[name='keyword']").val(); 
+    if(key)
+    {
+       	  $(".str").each(function(i){
+            //获取当前的文字
+          var aa = $(this).html();
+          var c = aa.replace(new RegExp(key,'g'),"<span style='color:rgb(236, 103, 103)'>"+key+"</span>");
+                 $(this).html(c);
+      });
+    }  
+
+});
+</script>

@@ -34,7 +34,7 @@ Ut dui velit, dapibus vitae scelerisque id, tincidunt vel arcu. Aenean ornare le
     <div class="navbar">
       <ul class="nav">
         <li class="item">
-          <a href="#">Home</a>
+        <a href="{{route('index')}}">Home</a>
         </li>
 
         <li class="item">
@@ -70,37 +70,23 @@ Ut dui velit, dapibus vitae scelerisque id, tincidunt vel arcu. Aenean ornare le
             <header>
 
               <div class="icon"></div>
-              <time datetime="2011-08-09T09:21:37.000Z"><a href="/hexo-theme-light/2011/08/09/lorem-ipsum/">
-                  xx1</a></time>
+            
 
-              <h4 class="title">
+              <h3 class="title">
                 {{$data->title}}
-              </h4>
+              </h3>
             </header>
+            <time datetime="{{$data->created_at}}">
+              {{$data->created_at}}
+              </time>
             <div class="entry">
-              {{$data->content}}
+              {{!!$data->content!!}}
             </div>
             <footer>
               <div class="tags">
                 <a href="/hexo-theme-light/tags/dolor/">dolor</a>, <a href="/hexo-theme-light/tags/amet/">amet</a>
               </div>
 
-
-              <div class="addthis addthis_toolbox addthis_default_style">
-
-                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-
-
-                <a class="addthis_button_tweet"></a>
-
-
-                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-
-
-                <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-
-                <a class="addthis_counter addthis_pill_style"></a>
-              </div>
               <script type="text/javascript" src="js/addthis_widget.js"></script>
 
 
@@ -149,15 +135,27 @@ Ut dui velit, dapibus vitae scelerisque id, tincidunt vel arcu. Aenean ornare le
     <div class="clearfix"></div>
   </div>
   <footer id="footer" class="inner">
- 
-    
-      <div class="list-page">
-        <a href="{{route('content',['id'=>$page[0]['id']])}}">  {{$page[0]['title']}} </a>
-      </div>
 
+    @if($page[1]['id']==$page[2])
+   
+          <a href="{{route('content',['id'=>$page[1]['id']])}}">  {{$page[1]['title']}} </a>
+       
+    @else
+    {{$page[1]['id']}}
       <div class="list-page">
-        <a href="{{route('content',['id'=>$page[1]['id']])}}">  {{$page[1]['title']}} </a>
-      </div>
+          上一篇
+          <a href="{{route('content',['id'=>$page[1]['id']])}}">  {{$page[1]['title']}} </a>
+        </div>
+    @endif
+
+        <div class="list-page">
+            下一篇
+            <a href="{{route('content',['id'=>$page[0]['id']])}}">  {{$page[0]['title']}} </a>
+          </div>
+    
+    
+
+    
     <div class="alignleft">
 
       &copy; 2018 SkyArrow
@@ -185,3 +183,12 @@ Ut dui velit, dapibus vitae scelerisque id, tincidunt vel arcu. Aenean ornare le
 </body>
 
 </html>
+<script>
+// $('.page').click(function(){
+//   // $('.page').remove();
+//   $('.page').html(123);
+
+// })
+ 
+
+</script>
