@@ -41,15 +41,51 @@ class article extends Model
     }
 
     //获取文章内容
-    public function getContent($id)
+    public static function getContent($id)
     {
         //判断是否是公开的
-        $data = Article::where('is_show',1)->where('id',$id)->first();
-        if($data==NULL)
+       $data = Article::where('is_show',1)->where('id',$id)->count();
+       if($data)
+       {
+           return Article::find($id);
+       
+       }else{
+
+           return false;
+       }
+    }
+
+    //获取内容页上下一篇
+    public static function getPage($id)
+    {
+        $num = Article::select('id')->count();
+        
+        $s= $id;
+        for($s;$s>0;$s--)
+        {        
+            $data = Article::where('id',--$s)->where('is_show',1)->count(); 
+            if($data)
+                break;         
+        }
+   
+        $x = $id;
+        for($x;$x<$num;$x++)
+        {        
+            $data = Article::where('id',++$x)->where('is_show',1)->count(); 
+            if($data)
+                break; 
+        }
+ 
+        $page = Article::select('title','id')->whereIn('id',[$s,$x])->get();
+        
+        $str = [];
+        foreach($page as $k=>$v)
         {
-            return redirect()->route('index');
+            $str[$k]['id']=$v['id'];
+            $str[$k]['title']=$v['title'];
         }
 
+        return $str;
     }
 
     //是否公开

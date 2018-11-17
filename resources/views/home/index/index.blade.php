@@ -52,9 +52,9 @@
             <header>
               <!-- <div class="icon"></div> -->
 
-              <h1 class="title">
+              <h4 class="title">
               <a href="{{route('content',['id'=>$v->id])}}">{{$v->title}}</a>
-              </h1>
+              </h4>
 
               <time datetime="xx2">
               <a href="">{{$v->created_at}}</a>

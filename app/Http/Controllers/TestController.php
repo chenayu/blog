@@ -27,15 +27,41 @@ class TestController extends Controller
         // select count(a.id) c,a.* from types a LEFT JOIN articles b on b.type_id=a.id group By a.id
      }
 
-     public function test($id=2)
+     public function test($id=19)
      {
-        // $data = Article::where('is_show',1)->where('id',$id)->first();
-        // if($data==NULL)
-        // {
-        //     return redirect()->route('index');
-        // }
-       echo $id = session('id');
+        $num = Article::select('id')->count();
+        
+        $s= $id;
+        for($s;$s>0;$s--)
+        {        
+            $data = Article::where('id',--$s)->where('is_show',1)->count(); 
+            if($data)
+                break;         
+        }
+        echo $s;
+   
+        $x = $id;
+        for($x;$x<$num;$x++)
+        {        
+            $data = Article::where('id',++$x)->where('is_show',1)->count(); 
+            if($data)
+                break; 
+        }
+        echo $x;
+ 
+        $page = Article::select('title','id')->whereIn('id',[$s,$x])->get();
+        
+        $str = [];
+        foreach($page as $k=>$v)
+        {
+            $str[$k]['id']=$v['id'];
+            $str[$k]['title']=$v['title'];
 
+        }
+
+        
+        var_dump($str[0]['id']);
+  
  
      }
 

@@ -54,7 +54,7 @@ Route::get('/info','admin\InfoController@index')->name('info');
 Route::post('/info/insert','admin\InfoController@insert')->name('info.insert')->name('info');
 
 
-//后台登录
+//退出登录
 Route::get('/logout','admin\LoginController@logout')->name('logout');
 
 //模拟数据

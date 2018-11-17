@@ -19,8 +19,15 @@ class IndexController extends Controller
 
     //获取文章内容页的数据
     public function content($id)
-    {
+    {   
+        $cat = Type::getCategory();
         $con = Article::getContent($id);
-        return view('home.content.content',['data'=>$con]);
+        if(!$con)
+        {
+            return redirect()->route('index');
+        }
+        $page = Article::getPage($id);
+
+        return view('home.index.content',['data'=>$con,'cat'=>$cat,'page'=>$page]);
     }
 }
