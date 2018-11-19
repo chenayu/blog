@@ -18,7 +18,7 @@
 
 Route::middleware(['login'])->group(function(){ 
 
-Route::get('/admin','admin\indexController@index')->name('admin.index');
+Route::get('/admin','admin\IndexController@index')->name('admin.index');
 
 //文章列表
 Route::get('/article','admin\ArticleController@index')->name('article');
