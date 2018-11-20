@@ -27,13 +27,15 @@ class TestController extends Controller
         // select count(a.id) c,a.* from types a LEFT JOIN articles b on b.type_id=a.id group By a.id
      }
 
-     public function test($id=19)
+     //根据当前文章的id获取上一篇下一篇文章
+     public function test3($id=19)
      {
+         //取出总的记录数
         $num = Article::select('id')->count();
         
         $s= $id;
         for($s;$s>0;$s--)
-        {        
+        {    //根据当前id找到他的上一篇且公开的    
             $data = Article::where('id',--$s)->where('is_show',1)->count(); 
             if($data)
                 break;         

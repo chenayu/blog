@@ -11,18 +11,19 @@ class ArticleController extends Controller
 {
     public function index(Request $req)
     {
-
-       $type = Type::getType(); //取出分类
-       $data = Article::getArticle($req); //取出文章
-       return view('admin.article.index',['cat'=>$type,'data'=>$data]);
+        
+        $type = Type::getType(); //取出分类
+        $data = Article::getArticle($req); //取出文章
+        return view('admin.article.index',['cat'=>$type,'data'=>$data]);
     }
+    use App\Models\Tags;
 
     //添加
     public function insert(Request $req)
     {
         $article = new Article();
         $article->fill($req->all());
-        $article->save();
+        $id = $article->save();
         return redirect()->route('article');
     }
 
