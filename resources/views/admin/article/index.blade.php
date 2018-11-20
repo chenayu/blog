@@ -148,9 +148,11 @@
                     <td>
                         <input type="radio" name="top" value="0"  checked>否
                         <input type="radio" name="top" value="1">是
-
-                        
                     </td>
+                  </tr>
+                  <tr>
+                      <td>标签</td>
+                      <td> <input type="input" name="tags" value=""> </td>
                   </tr>
 
                   <tr>
