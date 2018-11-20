@@ -50,8 +50,20 @@ Route::get('/category/delete/{id}','admin\CategoryController@delete')->name('cat
 Route::get('/personage','admin\PersonageController@index')->name('personage');
 //信息
 Route::get('/info','admin\InfoController@index')->name('info');
-//个人
-Route::post('/info/insert','admin\InfoController@insert')->name('info.insert')->name('info');
+//添加个人
+Route::post('/info/insert','admin\InfoController@insert')->name('info.insert');
+
+//标签页
+Route::get('/tags','admin\TagsController@index')->name('tags');
+//添加标签
+Route::post('/tags/insert','admin\TagsController@insert')->name('tags.insert');
+//显示修改页
+Route::get('/tags/edit','admin\TagsController@edit')->name('tags.edit');
+Route::get('/tags/update','admin\TagsController@update')->name('tags.update');
+//删除标签
+Route::get('/tags/delete','admin\TagsController@delete')->name('tags.delete');
+
+
 
 
 //退出登录
