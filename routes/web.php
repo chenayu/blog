@@ -53,6 +53,13 @@ Route::get('/info','admin\InfoController@index')->name('info');
 //个人
 Route::post('/info/insert','admin\InfoController@insert')->name('info.insert')->name('info');
 
+//标签页
+Route::get('/tags','admin\TagsController@index')->name('tags');
+Route::post('/tags/insert','admin\TagsController@insert')->name('tags.insert');
+Route::get('/tags/delete','admin\TagsController@delete')->name('tags.delete');
+
+
+
 
 //退出登录
 Route::get('/logout','admin\LoginController@logout')->name('logout');

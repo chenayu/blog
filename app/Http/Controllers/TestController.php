@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Type;
+use App\Models\Tags;
+use App\Models\article_tags;
 use DB;
+use App\Http\Controllers\PinyinController;
 
 class TestController extends Controller
 {
@@ -67,5 +70,46 @@ class TestController extends Controller
   
  
      }
+
+     public function test()
+     {
+        
+
+         $article = new Article();
+         $article->title = rand(1,9);
+         $py = new PinyinController();
+         $pinyin = $py->getpy("糗事",true);
+         $article->content = $pinyin;
+         $article->save();
+         $id = $article->id;
+         $rest = ['a','b','c'];
+
+         foreach($rest as $v)
+         {
+             $tags = new Tags();
+             $tags->tags=$v;
+             $tags->save();
+             $tags_id = $tags->id;
+
+             $tags = new article_tags;
+          
+             $tags->article_id = $id;
+             $tags->tags_id = $tags_id;
+             $tags->save();
+             
+         }
+
+     }
+
+     public function test22()
+     {
+         $str = '1,2,3,';
+        echo $rest = substr($str, 0, -1);
+        $str = Article::select('tags.*')->leftJoin('tags','article.tags_id','=','tags.id')->get();
+        
+
+     }
+
+
 
 }
