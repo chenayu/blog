@@ -65,6 +65,13 @@ Route::get('/tags/delete','admin\TagsController@delete')->name('tags.delete');
 
 
 
+//标签页
+Route::get('/tags','admin\TagsController@index')->name('tags');
+Route::post('/tags/insert','admin\TagsController@insert')->name('tags.insert');
+Route::get('/tags/delete','admin\TagsController@delete')->name('tags.delete');
+
+
+
 
 //退出登录
 Route::get('/logout','admin\LoginController@logout')->name('logout');
