@@ -26,7 +26,6 @@ class TestController extends Controller
 
     public function test2(){
         $data =  Type::select('types.*',DB::raw('COUNT(*) as num'))->leftJoin('articles','types.id','=','articles.type_id')->groupBy('types.id')->get();
-        var_dump($data);
         // select count(a.id) c,a.* from types a LEFT JOIN articles b on b.type_id=a.id group By a.id
      }
 
@@ -103,23 +102,33 @@ class TestController extends Controller
 
      public function test()
      {
-        
-        $str='a，b,c';
-        echo $str;
-        echo str_replace("，",",",$str);
-        exit;
-        
-        $arr = explode(',',$str);
-        foreach($arr as $v)
+        $article = Article::get();
+        foreach($article as $k=>$v)
         {
-            $tag = Tags::where('tags',$v)->first();
-            if($tag)
+            $user = Article_tags::select('tags.*')->where('article_id',$v['id'])->leftJoin('tags','tags.id','=','article_tags.tags_id')->get();        
+            $tag = [];
+            foreach($user as $k1=>$v1)
             {
-                echo $tag['id'];
-            }else{
-                echo $v;
+                $tag[$k1]=$v1['tags'];
             }
+            $article[$k]['tags']=$tag;
         }
+        
+        echo '<pre>';
+        // return $article;
+        var_dump($article);
+        exit;
+    
+        foreach($article as $v)
+        {
+
+           echo $v['id'];
+
+            $user = Article_tags::where('article_id',$v)->leftJoin('tags','tags.id','=','articles.id')->get();
+            $v[''];
+            //SELECT * FROM article_tags a LEFT JOIN tags b ON a.tags_id = b.id
+        }
+        
         // echo '<pre>';
      }
 
