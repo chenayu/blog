@@ -71,7 +71,7 @@ class TestController extends Controller
  
      }
 
-     public function test()
+     public function test22()
      {
         
 
@@ -101,13 +101,26 @@ class TestController extends Controller
 
      }
 
-     public function test22()
+     public function test()
      {
-         $str = '1,2,3,';
-        echo $rest = substr($str, 0, -1);
-        $str = Article::select('tags.*')->leftJoin('tags','article.tags_id','=','tags.id')->get();
         
-
+        $str='a，b,c';
+        echo $str;
+        echo str_replace("，",",",$str);
+        exit;
+        
+        $arr = explode(',',$str);
+        foreach($arr as $v)
+        {
+            $tag = Tags::where('tags',$v)->first();
+            if($tag)
+            {
+                echo $tag['id'];
+            }else{
+                echo $v;
+            }
+        }
+        // echo '<pre>';
      }
 
 

@@ -122,10 +122,15 @@
     <div class="clearfix"></div>
   </div>
   <footer id="footer" class="inner">
- 
- 
     <div class="list-page"> 2 条 1/1 页
-        <div class="list-page"> {{ $data->links() }} </div>
+        <div class="list-page">
+          @if(isset($_GET['keyword']))
+           {{-- {{ $data->links() }} --}}
+           {{ $data->appends(['keyword' => isset($_GET['keyword']) ? $_GET['keyword'] : ''])->links() }} 
+           @else
+           {{$data->links()}}
+           @endif
+        </div>
 
     </div>
     <div class="alignleft">

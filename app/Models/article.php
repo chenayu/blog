@@ -23,7 +23,7 @@ class article extends Model
            });
        }
        return $data->orderBy('articles.id','desc')
-       ->paginate(10);
+       ->paginate(5);
     }
 
     //前台首页取数据
@@ -39,7 +39,7 @@ class article extends Model
            });
        }
        return $data->orderBy('articles.id','desc')
-       ->paginate(5);
+       ->paginate(5)->withPath('custom/url');
     }
 
     //获取文章内容
