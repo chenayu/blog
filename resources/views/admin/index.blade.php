@@ -350,6 +350,28 @@
 				            </li>
 				        </ul>                        
                     </li>
+
+                    <li class="treeview">
+				        <a href="#">
+				            <i class="fa fa-folder"></i> 
+				            <span>图片管理</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+				        </a>
+				        <ul class="treeview-menu">
+				            <li id="admin-login">
+                            <a href="{{route('album.index')}}" target="iframe">
+				                    <i class="fa fa-circle-o"></i>专辑列表
+				                </a>
+				            </li>
+							<li id="admin-login">
+                            <a href=" " target="iframe">
+                            <i class="fa fa-circle-o"></i>专辑类型
+				                </a>
+				            </li>
+				        </ul>                        
+                    </li>
                     
                     <li class="treeview">
                             <a href="#">

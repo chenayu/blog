@@ -32,6 +32,10 @@
         </li>
 
         <li class="item">
+          <a href="#">i</a>
+        </li>
+
+        <li class="item">
           <!-- <a href="#" class="contact">Contact</a> -->
           <a href="#">Contact</a>
 

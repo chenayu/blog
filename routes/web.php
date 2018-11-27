@@ -59,6 +59,15 @@ Route::post('/tags/insert','admin\TagsController@insert')->name('tags.insert');
 Route::get('/tags/delete','admin\TagsController@delete')->name('tags.delete');
 
 
+//专辑
+Route::get('/album','admin\AlbumController@index')->name('album.index');
+Route::post('/album/uploads','admin\AlbumController@uploads')->name('album.uploads');
+
+//类型
+Route::get('/album/img_cat','admin\AlbumController@img_cat')->name('album.img_cat');
+
+// Route::get('/album','home\AlbumController@index')->name('album');
+
 
 
 //退出登录
