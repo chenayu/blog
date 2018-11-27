@@ -9,6 +9,8 @@ use App\Models\Tags;
 use App\Models\article_tags;
 use DB;
 use App\Http\Controllers\PinyinController;
+use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Storage;
 
 class TestController extends Controller
 {
@@ -100,7 +102,7 @@ class TestController extends Controller
 
      }
 
-     public function test()
+     public function test5()
      {
         $article = Article::get();
         foreach($article as $k=>$v)
@@ -130,6 +132,30 @@ class TestController extends Controller
         }
         
         // echo '<pre>';
+     }
+
+     //图像处理
+     public function test()
+     {
+    
+     
+        $manager = new ImageManager(array('driver' => 'GD')); 
+        $image = $manager->make('uploads/uploads/20181127/1uaJgtq9nCX108wTRuXp3cfNPZihPUJOCThY2Ukr.jpeg');
+        $c = $manager->make('uploads/uploads/20181127/1uaJgtq9nCX108wTRuXp3cfNPZihPUJOCThY2Ukr.jpeg')->width();
+        $d = $manager->make('uploads/uploads/20181127/1uaJgtq9nCX108wTRuXp3cfNPZihPUJOCThY2Ukr.jpeg')->height();
+        
+        $image->resize(300, null, function ($c) {
+            $c->aspectRatio();
+        });
+        // echo $c.$d;
+        // var_dump($c,$d);
+        // exit;
+        $c = $image->save('uploads/new_avatar.jpeg');
+
+        // echo asset('uploads/file.txt');
+      
+        // uploads/20181127/TMCO1GEwqHf8WmlGzm3ZEJXLeArv0a6Ik4udFRli.jpeg
+
      }
 
 
