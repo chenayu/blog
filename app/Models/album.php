@@ -53,10 +53,6 @@ class album extends Model
         $album->img=$logo;
         $album->save();
 
-
-
-
-
-            // return redirect()->route('blog.list'); 
+        // return redirect()->route('blog.list'); 
    }
 }
