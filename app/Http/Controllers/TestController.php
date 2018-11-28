@@ -11,6 +11,8 @@ use DB;
 use App\Http\Controllers\PinyinController;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
+use Jenssegers\Agent\Agent;
+
 
 class TestController extends Controller
 {
@@ -134,28 +136,28 @@ class TestController extends Controller
         // echo '<pre>';
      }
 
-     //图像处理
+ 
      public function test()
      {
     
-     
-        $manager = new ImageManager(array('driver' => 'GD')); 
-        $image = $manager->make('uploads/uploads/20181127/1uaJgtq9nCX108wTRuXp3cfNPZihPUJOCThY2Ukr.jpeg');
-        $c = $manager->make('uploads/uploads/20181127/1uaJgtq9nCX108wTRuXp3cfNPZihPUJOCThY2Ukr.jpeg')->width();
-        $d = $manager->make('uploads/uploads/20181127/1uaJgtq9nCX108wTRuXp3cfNPZihPUJOCThY2Ukr.jpeg')->height();
-        
-        $image->resize(300, null, function ($c) {
-            $c->aspectRatio();
-        });
-        // echo $c.$d;
-        // var_dump($c,$d);
-        // exit;
-        $c = $image->save('uploads/new_avatar.jpeg');
+        $id = session('idw');
+        echo $id;
+        $agent = new Agent();
 
-        // echo asset('uploads/file.txt');
-      
-        // uploads/20181127/TMCO1GEwqHf8WmlGzm3ZEJXLeArv0a6Ik4udFRli.jpeg
+        $pc=$agent->isDesktop();
+        $phone = $agent->isPhone();
 
+        if($pc){
+            $platform = $agent->platform();
+            $browser = $agent->browser();
+            echo $platform;
+            echo $browser;
+        }elseif($phone){
+            $device = $agent->device();
+            $browser = $agent->browser();
+        }else{
+            echo 'x';
+        }
      }
 
 

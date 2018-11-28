@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
+use Illuminate\Support\Facades\Storage;
+use Jenssegers\Agent\Agent;
+
+
 
 use Closure;
 
@@ -16,14 +20,34 @@ class Access
     public function handle($request, Closure $next)
     {
        $id = session('id');
-       $id = isset($id)? session('id') : '访客';
-       $mail = session('mail');
-       $path = $request->path();
+       $id = isset($id) ? '---ID:'.$id : '';
+       $route = $request->path();
        $date = date('Y-m');
-       @mkdir('access');
-       @mkdir('access/'.$date);
-       $str = '['.date('Y-m-d H:i:s').']'.$request->ip().'---'.$path.'---ID:'.$id;
-       file_put_contents('access/'.$date.'/contents.log',$str."\r\n",FILE_APPEND);
+       
+       //获取设备信息
+       $agent = new Agent();
+       $pc=$agent->isDesktop();
+       $phone = $agent->isPhone();
+
+       if($pc){
+           $form = $agent->platform();
+           $browser = $agent->browser();
+       }elseif($phone){
+           $form = $agent->device();
+           $browser = $agent->browser();
+       }else{
+        $form = 'f';
+        $browser = 'b';
+       }
+
+    if($id)
+       $path = 'my/'.$date;
+    else
+       $path = 'access/'.$date;
+
+       $str = '['.date('Y-m-d H:i:s').']'.$request->ip().'---'.$route.$id.'---['.$form.':'.$browser.']';
+       Storage::makeDirectory($path);
+       file_put_contents($path.'/contents.log',$str."\r\n",FILE_APPEND);
        return $next($request);
     }
 }
