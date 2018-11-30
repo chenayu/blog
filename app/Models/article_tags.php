@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class article_tags extends Model
+class Article_tags extends Model
 {
    public $timestamps = false;
 }

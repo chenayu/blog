@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Storage;
 use Intervention\Image\ImageManager;
 
-class album extends Model
+class Album extends Model
 {
 //    public $timestamps = false;
    protected  $fillable=['img','img_name','categor','img_s'];

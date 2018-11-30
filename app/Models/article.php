@@ -7,7 +7,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Type;
 
-class article extends Model
+class Article extends Model
 {
     protected  $fillable=['title','content','display','is_show','img','type_id','top'];
 
