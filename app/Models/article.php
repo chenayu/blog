@@ -86,7 +86,7 @@ class Article extends Model
             $str[$k]['id']=$v['id'];
             $str[$k]['title']=$v['title'];
         }
-        $str[]=$num;
+        $str[]=$num; 
         return $str;
     }
 
