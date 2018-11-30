@@ -80,6 +80,7 @@ class Article extends Model
  
         $page = Article::select('title','id')->whereIn('id',[$s,$x])->get();
         
+        //取出的上下一遍保存在数组
         $str = [];
         foreach($page as $k=>$v)
         {
