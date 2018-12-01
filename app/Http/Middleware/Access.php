@@ -39,14 +39,15 @@ class Access
         $form = 'f';
         $browser = 'b';
        }
-
+   
     if($id)
        $path = 'my/'.$date;
     else
        $path = 'access/'.$date;
 
        $str = '['.date('Y-m-d H:i:s').']'.$request->ip().'---'.$route.$id.'---['.$form.':'.$browser.']';
-       Storage::makeDirectory($path);
+        //Storage::makeDirectory($path);  这里使用到下一个月时会报错
+       @mkdir($path);
        file_put_contents($path.'/contents.log',$str."\r\n",FILE_APPEND);
        return $next($request);
     }

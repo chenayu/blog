@@ -27,4 +27,13 @@ class AlbumController extends Controller
     {
         return view('admin.album.index');
     }
+
+    // public function doadd(Request $req)
+    // {
+    //     // $file = $req->file('img');
+    //     // dd($file);
+    //     $date = date('Ymd');
+    //     $req->img->store('uploads/'.$date);
+        
+    // }
 }

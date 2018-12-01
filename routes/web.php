@@ -75,6 +75,8 @@ Route::get('/tags/delete','admin\TagsController@delete')->name('tags.delete');
 Route::get('/album','admin\AlbumController@index')->name('album.index');
 Route::post('/album/uploads','admin\AlbumController@uploads')->name('album.uploads');
 
+
+
 //类型
 Route::get('/album/img_cat','admin\AlbumController@img_cat')->name('album.img_cat');
 

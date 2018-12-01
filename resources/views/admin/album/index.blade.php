@@ -27,10 +27,10 @@
   </table>
 
   <tbody>
-      @foreach($data as $v)
+      {{-- @foreach($data as $v) --}}
     <tr>
       <td>
-          <div class="row">
+          {{-- <div class="row">
               <div class="col-xs-6 col-md-3">
                 <a href="#" class="thumbnail">
                   <img src="{{ Storage::url($v->img_s)}}" alt="...">
@@ -38,25 +38,42 @@
               </div>
               {{ Storage::url($v->img_s)}}
               ...
-            </div>
+            </div> --}}
       </td>
+
     </tr>
-    @endforeach
+    {{-- @endforeach --}}
   </tbody>
 
-
+  <div id="editor">
+      <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+  </div>
 
   
-<form action="{{route("album.uploads")}}" method="post"  enctype="multipart/form-data">
+{{-- <form action="{{route("album.uploads")}}" method="post"  enctype="multipart/form-data">
 		{{ csrf_field() }}
     <input type="file" name="img">
     <input type="submit" value="t">
-  </form>
+  </form> --}}
 
+  <meta name="csrf-token" content="{{csrf_token()}}">
 </body>
-
 </html>
 <script src="/js/base.js"></script>
-<script>
+<script type="text/javascript" src="js/wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    // 或者 var editor = new E( document.getElementById('editor') )
+    // 隐藏“网络图片”tab
+    editor.customConfig.showLinkImg = false
+    //显示上传本地图片按钮
+    editor.customConfig.debug = true
+    editor.customConfig.uploadImgServer = '/upload'
+    editor.customConfig.uploadFileName = 'img'
 
+    editor.customConfig.uploadImgHeaders = {
+    'Accept':$('meta[name ="csrf-token"]').attr('content')
+}
+    editor.create()
 </script>
