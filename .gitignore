@@ -3,7 +3,7 @@
 /public/storage
 /public/uploads
 /public/my
-/public/access
+/access
 /storage/*.key
 /vendor
 /.idea
