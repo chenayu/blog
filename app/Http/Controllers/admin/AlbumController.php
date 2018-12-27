@@ -18,9 +18,14 @@ class AlbumController extends Controller
 
     public function uploads(Request $req)
     {
-
+        //上传图片
         $img =new Album;
-        $img->insert($req);
+        $image =  $img->insert($req);
+        return json_encode([
+            'success'=>false,
+            'msg'=>'上传成功',  //如果上面为false 就显示这句话
+            'file_path'=>$image  //返回图片保存的路径，如果上传失败就没有这一项
+        ]);
     }
 
     public function img_cat()
