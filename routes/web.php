@@ -101,6 +101,9 @@ Route::get('/','home\IndexController@index')->name('index');
 //内容页
 Route::get('/content/{id}','home\IndexController@content')->name('content');
 
+Route::get('/about','home\IndexController@about')->name('about');
+
+
 //自动部署
 Route::get('/deploy',function (){
     exec('git pull');

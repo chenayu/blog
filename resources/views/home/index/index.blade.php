@@ -1,182 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Blog Home - Start Bootstrap Template</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom styles for this template -->
+    <link href="/css/blog-home.css" rel="stylesheet">
 
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="/js/jquery.min.js"></script>
-  <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
 
-  <div class="navtop">
-    <div class="navbar">
-      <ul class="nav">
-        <li class="item">
-        <a href="{{route('index')}}">Home</a>
-        </li>
-
-        <li class="item">
-          <a href="#">Blog</a>
-        </li>
-
-        <li class="item">
-          <a href="#">About</a>
-        </li>
-
-        <li class="item">
-          <a href="#">i</a>
-        </li>
-
-        <li class="item">
-          <!-- <a href="#" class="contact">Contact</a> -->
-          <a href="#">Contact</a>
-
-        </li>
-      </ul>
-
-      <div class="logo">
-        <img src="#">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Mxy </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{route('index')}}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{{route('about')}}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </div>
+    </nav>
 
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft">
-      <div id="wrapper">
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+          <h1 class="my-4">
+            {{-- Page Heading<small>Secondary Text</small> --}}
+          </h1>
           @foreach($data as $v)
-        <article class="post">
-          <div class="post-content">
 
-            
-            <header>
-              <!-- <div class="icon"></div> -->
-
-              <h2 class="title str">
-              <a href="{{route('content',['id'=>$v->id])}}">{{$v->title}}</a>
-              </h2>
-
-              <time datetime="xx2">
-              {{$v->created_at}}
-              </time>
-            </header>
-
-            <div class="entry str">
-              {{!! $v->content !!}}
+          <!-- Blog Post -->
+          <div class="card mb-4">
+            {{-- <img class="card-img-top" src="http://placehold.it/500x250" alt="Card image cap"> --}}
+            <div class="card-body">
+              <a class="title" href="{{route('content',['id'=>$v->id])}}"> <h5 class="card-title str">{{$v->title}}</h5></a>
+              <p class="card-text content str">  {!! $v->content !!}  </p>
+              <a href="{{route('content',['id'=>$v->id])}}" class="">阅读全文 &rarr;</a>
             </div>
-         
-            <footer>
-              <div class="alignleft">
-                <a href="" class="more-link">
-                {{$v->cat_name}}</a>
-              </div>
-              <div class="clearfix"></div>
-            </footer>
+            <div class="card-footer text-muted">
+             {{str_limit($v->created_at,10,'')}} 
+            <a class="title" href="{{route('index',['keyword'=>$v->cat_name])}}">{{$v->cat_name}}</a>
+            </div>
           </div>
-        </article>
-        @endforeach
-        <nav id="pagination">
+          @endforeach
 
-          <div class="clearfix"></div>
-        </nav>
-      </div>
 
-    </div>
-    <aside id="sidebar" class="alignright">
-      <!-- 搜索框 -->
-      <div class="search">
-        <form action="" method="get" accept-charset="utf-8">
-		  	{{csrf_field()}}
-          <input type="text" name="keyword" results="0" value="<?=isset($_GET['keyword']) ? $_GET['keyword'] : ''; ?>" placeholder="Search">
-          <input class="inp" type="submit" value="搜索">
-        </form>
-      </div>
-      <!-- 搜索框end -->
-
-      <div class="widget tag">
-        <h3 class="title">Tags</h3>
-        <ul class="entry">
-            @foreach($cat as $v)
-          <li><a href="">
-          {{$v->cat_name}}</a><small>
-          {{$v->num}}</small></li>
-              @endforeach
-        </ul>
-      </div>
-
-      <div class="widget twitter">
-        <h3 class="title">Tweets</h3>
-        <ul id="tweets"></ul>
-      </div>
-
-      <script type="text/javascript">
-        var twitter_stream = ['tommy351', 5, false];
-      </script>
-      <!-- <script src="js/twitter.js"></script> -->
-
-    </aside>
-  
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner">
-    <div class="list-page"> 2 条 1/1 页
-        <div class="list-page">
-          @if(isset($_GET['keyword']))
-           {{-- {{ $data->links() }} --}}
-           {{ $data->appends(['keyword' => isset($_GET['keyword']) ? $_GET['keyword'] : ''])->links() }} 
-           @else
-           {{$data->links()}}
-           @endif
+          <div class="list-page">
+              @if(isset($_GET['keyword']))
+               {{-- {{ $data->links() }} --}}
+               {{ $data->appends(['keyword' => isset($_GET['keyword']) ? $_GET['keyword'] : ''])->links() }} 
+               @else
+               {{$data->links()}}
+               @endif
+            </div>
         </div>
 
-    </div>
-    <div class="alignleft">
-      &copy; 2018 xin
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+          <!-- Search Widget -->
+          <div class="card my-4">
+            {{-- <h5 class="card-header">Search</h5> --}}
+            <div class="card-body">
+
+        <form action="" method="get" accept-charset="utf-8">
+		  	{{csrf_field()}}
+              <div class="input-group">
+                <input type="text" class="form-control" name="keyword" placeholder="Search for..." value="<?=isset($_GET['keyword'])? $_GET['keyword'] : ''; ?>">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="submit">搜索</button>
+                </span>
+              </div>
+        </form>
+
+            </div>
+          </div>
+
+          <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">分类</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+            @foreach($cat as $v)
+                    <li>
+                      <a class="title" href="{{route('index',['keyword'=>$v->cat_name])}}">{{$v->cat_name}}
+                        &nbsp;<small>({{$v->num}})</small></a>
+                    </li>
+              @endforeach
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
 
     </div>
-    <div class="clearfix"></div>
-  </footer>
-  <!-- <script src="js/jquery.imagesloaded.min.js"></script> -->
-  <!-- <script src="js/gallery.js"></script> -->
+    <!-- /.container -->
 
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
-  <link rel="stylesheet" href="css/jquery.fancybox.css" media="screen" type="text/css">
-  <!-- <script src="js/jquery.fancybox.pack.js"></script> -->
-  <!-- <script type="text/javascript">
-        (function ($) {
-          $('.fancybox').fancybox();
-        })(jQuery);
-      </script> -->
-
-
-  <!-- <a href="https://github.com/tommy351/hexo-theme-light" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;"
-          src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a> -->
-</body>
+  </body>
 
 </html>
-<script src="/js/base.js"></script>
 <script>
-$(function(){
-  //获取搜索的关键字
-  var key= $("input[name='keyword']").val(); 
-    if(key)
-    {
-       	  $(".str").each(function(i){
-            //获取当前的文字
-          var aa = $(this).html();
-          var c = aa.replace(new RegExp(key,'g'),"<span style='color:rgb(236, 103, 103)'>"+key+"</span>");
-                 $(this).html(c);
-      });
-    }  
-
-});
-</script>
+    $(function(){
+      //获取搜索的关键字
+      var key= $("input[name='keyword']").val(); 
+        if(key)
+        {
+           	  $(".str").each(function(i){
+                //获取当前的文字
+              var aa = $(this).html();
+              var c = aa.replace(new RegExp(key,'g'),"<span style='color:rgb(236, 103, 103)'>"+key+"</span>");
+                     $(this).html(c);
+          });
+        }  
+    
+    });
+    </script>

@@ -1,0 +1,17 @@
+
+body {
+  padding-top: 54px;
+  background-color: #eee;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+    
+  }
+}
+
+.title {font-size:16px} 
+.title:link {color: rgb(79, 79, 79); text-decoration:none;}
+.title:active {color: rgb(169, 171, 170);}  
+.title:visited {color:rgb(79, 101, 110);text-decoration:none;}

@@ -49,6 +49,7 @@
 <script type="text/javascript" src="/simditor-2.3.6/scripts/simditor.js"></script>
 
 <script type="text/javascript">
+//上传图片时使用
 $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
  var editor = new Simditor({
 		  textarea: $('#editor'),
@@ -73,9 +74,9 @@ $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('conten
 					    'alignment'
 					    ],
                   upload:{
-			      url:'/album/uploads', 
-			      params:'null',
-			      fileKey:'img',
+			      url:'/album/uploads', //图片上传接口
+			      params:'null',  
+			      fileKey:'img',   //后台接收图片时的名称
 			      connectionCount:3,
 			      leaveConfirm: '文件上传中，真要离开吗？'
 			  }

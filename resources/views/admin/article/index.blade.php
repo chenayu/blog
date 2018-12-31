@@ -8,6 +8,7 @@
     <title>文章管理</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/plugins/adminLTE/css/AdminLTE.css">
     <link rel="stylesheet" href="/plugins/adminLTE/css/skins/_all-skins.min.css">
@@ -179,6 +180,7 @@
 <script type="text/javascript" src="/simditor-2.3.6/scripts/uploader.js"></script>
 <script type="text/javascript" src="/simditor-2.3.6/scripts/simditor.js"></script>
 <script>
+$.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
 
     // 是否公开
     function show(id){
@@ -247,9 +249,9 @@
 					    'alignment'
 					    ],
                   upload:{
-			      url:'/upload', 
+			      url:'album/uploads', 
 			      params:'null',
-			      fileKey:'image',
+			      fileKey:'img',
 			      connectionCount:3,
 			      leaveConfirm: '文件上传中，真要离开吗？'
 			  }
