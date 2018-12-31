@@ -1,0 +1,33 @@
+
+body {
+  padding-top: 54px;
+  background-color: #F7F7F7;
+
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+ 
+.navbar-dark .navbar-nav .nav-link{
+  /* color:#fff; */
+}
+
+.title {font-size:16px} 
+.title:link {color: rgb(79, 79, 79); text-decoration:none;}
+.title:active {color: rgb(169, 171, 170);}  
+.title:visited {color:rgb(79, 101, 110);text-decoration:none;}
+
+.content{
+  font-size:16px;
+  color:#5b5b5b
+}
+
+.card-footer {
+  padding: .25rem 1.25rem;
+}
+
+ 

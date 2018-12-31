@@ -30,4 +30,9 @@ class IndexController extends Controller
 
         return view('home.index.content',['data'=>$con,'cat'=>$cat,'page'=>$page]);
     }
+
+    //关于
+    public function about(){
+        return view('home.index.about');
+    }
 }

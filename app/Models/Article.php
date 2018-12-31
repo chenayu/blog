@@ -39,7 +39,9 @@ class Article extends Model
            });
        }
        return $data->orderBy('articles.id','desc')
-       ->paginate(5)->withPath('custom/url');
+    //    ->paginate(5)->withPath('custom/url');
+    ->paginate(5);
+
     }
 
     //获取文章内容
