@@ -97,10 +97,10 @@ Route::get('/login','admin\LoginController@login')->name('login');
 Route::post('/dologin','admin\LoginController@dologin')->name('dologin');
 
 //主页
-Route::get('/','home\IndexController@index')->name('index');
-// Route::get('/',function(){
-//     return '';
-// });
+//Route::get('/','home\IndexController@index')->name('index');
+Route::get('/',function(){
+    return '';
+});
 //内容页
 Route::get('/content/{id}','home\IndexController@content')->name('content');
 
