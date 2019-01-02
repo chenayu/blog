@@ -25,9 +25,13 @@ class ArticleController extends Controller
         $article = new Article();
         $article->fill($req->all());
         $article->save();
+        //获取已经添加的文章id
         $article_id = $article->id;
 
-        //把接收到的字符串以 , 分开成数组
+        //判断标签是否为空
+        
+
+        //把接收到的字符串以,分开成数组
         $str = str_replace("，",",",$req->tags);
         $tags = explode(',',$str);
         //循环把标签插入数据库
@@ -42,11 +46,13 @@ class ArticleController extends Controller
                 $at->tags_id = $tag['id'];
                 $at->article_id = $article_id;
             }else{
+                //如果不存在就添加到标签表
                 $tag = new Tags();
                 $tag->tags = $v;
                 $tag->save();
+                //取出刚插入的标签id存入到关联表
                 $tag_id = $tag->id;
-
+               
                 $at->article_id = $article_id;
                 $at->tags_id = $tag_id;
             }

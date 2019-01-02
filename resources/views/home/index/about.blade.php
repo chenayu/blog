@@ -23,7 +23,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Mxy</a>
+        {{-- <a class="navbar-brand" href="#">Mxy</a> --}}
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -57,8 +57,9 @@
         <div class="col-lg-8">
 
           <!-- Title -->
-                
-          <h4 class="mt-4">about</h4>
+
+                {{-- 标题 --}}
+          {{-- <h4 class="mt-4">about</h4> --}}
 
           <!-- Author -->
           {{-- <p class="lead">
@@ -69,7 +70,7 @@
           <hr>
 
           <!-- Date/Time -->
-          <p>热爱这个世界</p>
+          {{-- <p>热爱这个世界</p> --}}
 
           <hr>
 
@@ -86,14 +87,27 @@
 
           <!-- Comments Form -->
            <div class="card my-4">
-            <h5 class="card-header">Leave a Comment:</h5>
+            {{-- <h5 class="card-header">Leave a Comment:</h5> --}}
+            <h5 class="card-header">:</h5>
+
+              @if($errors->any())
+                      <span>
+                @foreach($errors->all() as $e)
+                        {{ $e }}
+               @endforeach
+                      </span>
+                    @endif
+      
             <div class="card-body">
-              <form>
+              {{-- 发送信息到邮件 --}}
+            <form action="{{route('mail')}}" method="post">
+                {{csrf_field()}}
                 <div class="form-group">
-                  <textarea class="form-control" rows="3"></textarea>
+                  <textarea class="form-control" rows="3" name="message"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
+
             </div>
           </div>
         </div>
