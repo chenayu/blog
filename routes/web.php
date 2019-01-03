@@ -100,7 +100,7 @@ Route::post('/dologin','admin\LoginController@dologin')->name('dologin');
 //Route::get('/','home\IndexController@index')->name('index');
 Route::get('/',function(){
     return '';
-});
+})->name('index');
 //内容页
 Route::get('/content/{id}','home\IndexController@content')->name('content');
 
