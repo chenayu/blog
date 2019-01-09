@@ -64,10 +64,8 @@ class InfoController extends Controller
             ->setBody($req->message); // 邮件内容及邮件内容类型
             // 发送邮件
             $ret = $mailer->send($message);
-            var_dump( $ret ); 
-        
-
-       
+            var_dump( $ret );
+             
 
     }
 }
