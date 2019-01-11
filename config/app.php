@@ -148,6 +148,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+        'Torann\GeoIP\GeoIPServiceProvider',
         
 
         /*
@@ -214,6 +215,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'GeoIP' => 'Torann\GeoIP\GeoIPFacade',
 
     ],
 
