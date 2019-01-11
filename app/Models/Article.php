@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Type;
+use Illuminate\Support\Facades\Redis;
 
 class Article extends Model
 {
@@ -62,35 +63,24 @@ class Article extends Model
     //获取内容页上下一篇
     public static function getPage($id)
     {
-        $num = Article::select('id')->count();
-        
-        $s= $id;
-        for($s;$s>0;$s--)
-        {        
-            $data = Article::where('id',--$s)->where('is_show',1)->count(); 
-            if($data)
-                break;         
-        }
-   
-        $x = $id;
-        for($x;$x<$num;$x++)
-        {        
-            $data = Article::where('id',++$x)->where('is_show',1)->count(); 
-            if($data)
-                break; 
-        }
- 
-        $page = Article::select('title','id')->whereIn('id',[$s,$x])->get();
-        
-        //取出的上下一遍保存在数组
-        $str = [];
-        foreach($page as $k=>$v)
-        {
-            $str[$k]['id']=$v['id'];
-            $str[$k]['title']=$v['title'];
-        }
-        $str[]=$num; 
-        return $str;
+        $bj = '<';
+        $order = 'desc';
+
+        $title = [];
+        for($i=0;$i<2;$i++){
+            $data = Article::select('title','id')
+            ->where('id',$bj,$id)
+            ->where('is_show',1)
+            ->orderBy('id',$order)
+            ->limit(1)
+            ->get();
+            $bj = '>';
+            $order = 'asc';
+            $title[]=$data[0];
+            
+            }
+            
+            return $title;
     }
 
     //设置是否公开

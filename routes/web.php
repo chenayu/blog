@@ -97,7 +97,7 @@ Route::get('/login','admin\LoginController@login')->name('login');
 Route::post('/dologin','admin\LoginController@dologin')->name('dologin');
 
 //主页
-//Route::get('/','home\IndexController@index')->name('index');
+// Route::get('/','home\IndexController@index')->name('index');
 Route::get('/',function(){
     return '';
 })->name('index');

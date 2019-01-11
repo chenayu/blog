@@ -23,7 +23,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Mxy</a>
+        <a class="navbar-brand" href="#"> ..</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -78,12 +78,15 @@
           <hr>
                      <!-- Pagination -->
                      <ul class="pagination justify-content-center mb-4">
+                       
                         <li class="page-item">
-                          <a class="page-link" href="#">&larr; Older</a>
+                        <a class="page-link" href="{{route('content',['id'=>$page[0]['id']])}}">&larr; {{str_limit($page[0]['title'],10,'..')}}</a>
                         </li>
-                        <li class="page-item disabled">
-                          <a class="page-link" href="#">Newer &rarr;</a>
+                       
+                        <li class="page-item">  {{-- disabled --}}
+                          <a class="page-link" href="{{route('content',['id'=>$page[1]['id']])}}">{{str_limit($page[1]['title'],10,'..')}} &rarr;</a>
                         </li>
+                        
                       </ul>
         </div>
 

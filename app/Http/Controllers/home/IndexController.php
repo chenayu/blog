@@ -20,13 +20,21 @@ class IndexController extends Controller
     //获取文章内容页的数据
     public function content($id)
     {   
+        //获取分类
         $cat = Type::getCategory();
+        //判断是否公开
         $con = Article::getContent($id);
         if(!$con)
         {
+            //如果不是就跳回首页
             return redirect()->route('index');
         }
+
+        //获取上一页下一页
         $page = Article::getPage($id);
+        // echo '<pre>';
+        // var_dump($page);
+        // exit;
 
         return view('home.index.content',['data'=>$con,'cat'=>$cat,'page'=>$page]);
     }

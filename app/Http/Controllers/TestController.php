@@ -12,6 +12,8 @@ use App\Http\Controllers\PinyinController;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
 use Jenssegers\Agent\Agent;
+use Illuminate\Support\Facades\Redis;
+
 
 
 class TestController extends Controller
@@ -137,28 +139,40 @@ class TestController extends Controller
      }
 
  
-     public function test()
+     public function test($id=19)
      {
-    
-        $id = session('idw');
-        echo $id;
-        $agent = new Agent();
 
-        $pc=$agent->isDesktop();
-        $phone = $agent->isPhone();
+        // select * from articles where id<19 and is_show = 1 order by id DESC limit 1
 
-        if($pc){
-            $platform = $agent->platform();
-            $browser = $agent->browser();
-            echo $platform;
-            echo $browser;
-        }elseif($phone){
-            $device = $agent->device();
-            $browser = $agent->browser();
-        }else{
-            echo 'x';
-        }
-     }
+        // select * from articles where id>19 and is_show = 1 order by id asc limit 1
+     
+        //取出上一页下一页
+        $bj = '<';
+        $order = 'desc';
+
+        $title = [];
+        for($i=0;$i<2;$i++){
+            $data = Article::select('title','id')
+            ->where('id',$bj,$id)
+            ->where('is_show',1)
+            ->orderBy('id',$order)
+            ->limit(1)
+            ->get();
+            $bj = '>';
+            $order = 'asc';
+            $title[]=$data;
+         
+            echo '<pre>';
+            // echo $data[0]['id'];
+            // echo $data[0]['title'];
+            // var_dump($data[0]['title']);    
+            }
+            
+            var_dump( $title);
+        } 
+ 
+  
+     
 
 
 
