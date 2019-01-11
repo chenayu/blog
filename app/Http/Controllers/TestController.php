@@ -139,7 +139,7 @@ class TestController extends Controller
      }
 
  
-     public function test($id=19)
+     public function test6($id=19)
      {
 
         // select * from articles where id<19 and is_show = 1 order by id DESC limit 1
@@ -172,7 +172,10 @@ class TestController extends Controller
         } 
  
   
-     
+     public function test(){
+        // $location = GeoIP::getLocation();
+        // var_dump($location);
+     }
 
 
 
