@@ -76,33 +76,16 @@ class TestController extends Controller
  
      }
 
-     public function test22()
+     public function test()
      {
         
 
          $article = new Article();
          $article->title = rand(1,9);
+         //汉字转拼音
          $py = new PinyinController();
-         $pinyin = $py->getpy("糗事",true);
-         $article->content = $pinyin;
-         $article->save();
-         $id = $article->id;
-         $rest = ['a','b','c'];
-
-         foreach($rest as $v)
-         {
-             $tags = new Tags();
-             $tags->tags=$v;
-             $tags->save();
-             $tags_id = $tags->id;
-
-             $tags = new article_tags;
-          
-             $tags->article_id = $id;
-             $tags->tags_id = $tags_id;
-             $tags->save();
-             
-         }
+         $pinyin = $py->getpy("一样",true);
+         echo $pinyin;
 
      }
 
@@ -163,18 +146,16 @@ class TestController extends Controller
             $title[]=$data;
          
             echo '<pre>';
-            // echo $data[0]['id'];
-            // echo $data[0]['title'];
-            // var_dump($data[0]['title']);    
             }
             
             var_dump( $title);
         } 
  
   
-     public function test(){
-        // $location = GeoIP::getLocation();
-        // var_dump($location);
+     public function testss(){
+        $location = GeoIP::getLocation();
+    //   $location = geoip()->getLocation('27.974.399.65');
+        var_dump($location);
      }
 
 
